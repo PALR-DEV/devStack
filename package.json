@@ -21,12 +21,11 @@
     "dev": "tsx src/index.ts",
     "start": "node dist/index.cjs",
     "prepublishOnly": "cp README.npm.md README.md"
-
   },
   "bin": {
     "devstack": "./dist/index.cjs"
   },
-  "author": "",
+  "author": "Pedro A Lorenzo Rosario",
   "license": "MIT",
   "type": "module",
   "dependencies": {
@@ -45,4 +44,6 @@
     "NPM_README.md",
     "LICENSE"
   ]
+
+  
 }
