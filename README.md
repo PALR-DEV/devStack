@@ -43,8 +43,8 @@ Setting up local development infrastructure shouldn't be a bottleneck. Every min
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/devstack-cli.git
-cd devstack-cli
+git clone https://github.com/your-username/devstack.git
+cd devstack
 
 # Install dependencies
 npm install
