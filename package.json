@@ -1,6 +1,6 @@
 {
   "name": "@palr-dev/devstack-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.cjs",
   "scripts": {
@@ -28,7 +28,7 @@
 
   "files": [
     "dist",
-    "README.md",
+    "NPM_README.md",
     "LICENSE"
   ]
 }
