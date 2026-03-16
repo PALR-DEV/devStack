@@ -1,12 +1,14 @@
 {
   "name": "@palr-dev/devstack-cli",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
+  "description": "A CLI tool for managing DevStack services.",
   "main": "index.cjs",
   "scripts": {
     "build": "tsup src/index.ts --format cjs --out-dir dist --clean",
     "dev": "tsx src/index.ts",
-    "start": "node dist/index.cjs"
+    "start": "node dist/index.cjs",
+    "prepublishOnly": "cp README.npm.md README.md"
+
   },
   "bin": {
     "devstack": "./dist/index.cjs"

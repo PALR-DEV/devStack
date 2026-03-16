@@ -1,9 +1,3 @@
-<p align="center">
-  <img src="https://img.shields.io/npm/v/@palr-dev/devstack-cli?style=for-the-badge&color=blueviolet&label=npm" alt="npm version" />
-  <img src="https://img.shields.io/npm/dm/@palr-dev/devstack-cli?style=for-the-badge&color=brightgreen" alt="npm downloads" />
-  <img src="https://img.shields.io/npm/l/@palr-dev/devstack-cli?style=for-the-badge&color=blue" alt="license" />
-  <img src="https://img.shields.io/badge/node-%3E%3D18-orange?style=for-the-badge&logo=node.js&logoColor=white" alt="node version" />
-</p>
 
 <h1 align="center">devstack</h1>
 
