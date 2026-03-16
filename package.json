@@ -1,10 +1,10 @@
 {
-  "name": "devstack-cli",
-  "version": "1.0.0",
+  "name": "@palr-dev/devstack-cli",
+  "version": "1.0.1",
   "description": "",
   "main": "index.cjs",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs --target node18 --out-dir dist --clean",
+    "build": "tsup src/index.ts --format cjs --out-dir dist --clean",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.cjs"
   },
@@ -24,5 +24,11 @@
   "devDependencies": {
     "@types/node": "^25.5.0",
     "tsx": "^4.21.0"
-  }
+  },
+
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }
