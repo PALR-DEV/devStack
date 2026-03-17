@@ -1,4 +1,10 @@
 <p align="center">
+  <img src="https://img.shields.io/badge/🚧%20work%20in%20progress-yellow?style=for-the-badge" alt="work in progress" />
+</p>
+
+> ⚠️ **This project is a work in progress.** Features and APIs may change. Use with caution in production environments.
+
+<p align="center">
   <img src="https://img.shields.io/badge/devstack-cli-blueviolet?style=for-the-badge&logo=docker&logoColor=white" alt="devstack badge" />
   <img src="https://img.shields.io/badge/version-1.0.3-brightgreen?style=for-the-badge" alt="version" />
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="license" />
