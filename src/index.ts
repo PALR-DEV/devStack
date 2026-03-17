@@ -7,6 +7,7 @@ import { runGenerateConfig } from './functions/runGenerateConfig.js';
 import { runUpConfig, type UpOptions } from './functions/runUpConfig.js';
 import type { PostgresServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
+import { runLogsConfig } from './functions/runLogsConfig.js';
 
 const program = new Command();
 const cyan = '\x1b[36m';
@@ -24,7 +25,7 @@ const addCommand = program
 const logsCommand = program
 .command('logs')
 .description('View logs of DevStack services')
-.option('-s, --service <service>', 'Specify a service to view logs for (e.g., postgres)')
+.argument('[service]', 'Service name to view logs for (e.g., redis, postgres)')
 
 program
 .name('devstack')
@@ -85,8 +86,8 @@ program
 });
 
 logsCommand
-.action(() => {
-  console.log("🚧 Logs functionality is not implemented yet. Stay tuned! 🚧");
+.action((service?: string) => {
+  runLogsConfig(service);
 })
 
 function printHeader() {
