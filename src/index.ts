@@ -8,6 +8,7 @@ import { runUpConfig, type UpOptions } from './functions/runUpConfig.js';
 import type { PostgresServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
+import { runStatusConfig } from './functions/runStatusConfig.js';
 
 const program = new Command();
 const cyan = '\x1b[36m';
@@ -89,6 +90,14 @@ logsCommand
 .action((service?: string) => {
   runLogsConfig(service);
 })
+
+program
+.command("ps")
+.description("Show status of DevStack services")
+.argument('[service]', 'Service name to show status for (e.g., redis, postgres)')
+.action((service?: string) => {
+  runStatusConfig(service);
+});
 
 function printHeader() {
   console.log();
