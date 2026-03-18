@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs, { readFileSync } from "node:fs";
 import type { DevStackConfig } from "../models/devstack-config.js";
 import path from "node:path";
 
@@ -23,4 +23,14 @@ export function writeConfig(config: DevStackConfig): void {
   fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`, "utf-8");
 }
 
+
+export function getCliVersion(): string {
+  try {
+    const packageJsonPath = new URL('../package.json', import.meta.url);
+    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8')) as { version?: string };
+    return packageJson.version ?? '0.0.0';
+  } catch {
+    return '0.0.0';
+  }
+}
 

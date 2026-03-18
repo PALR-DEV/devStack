@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'node:fs';
 import { Command } from 'commander';
 import { createDevstackConfig } from './functions/createDevstackConfig.js';
 import { runAddPostgresConfig } from './functions/runAddPostgresConfig.js';
@@ -9,6 +10,7 @@ import type { PostgresServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
 import { runStatusConfig } from './functions/runStatusConfig.js';
+import { getCliVersion } from './utils/config.js';
 
 const program = new Command();
 const cyan = '\x1b[36m';
@@ -18,6 +20,10 @@ const yellow = '\x1b[33m';
 const blue = '\x1b[34m';
 const bold = '\x1b[1m';
 const reset = '\x1b[0m';
+
+
+
+const cliVersion = getCliVersion();
 
 const addCommand = program
 .command('add')
@@ -31,7 +37,7 @@ const logsCommand = program
 program
 .name('devstack')
 .description('A CLI tool for managing your development stack')
-.version('1.0.5');
+.version(cliVersion);
 
 program
 .command('init')
@@ -115,7 +121,7 @@ function printHeader() {
   // console.log();
   console.log(`${magenta}${bold}${art}${reset}`);
   console.log(`${cyan}${bold}devstack${reset} — A CLI tool for managing your development stack`);
-  console.log(`${bold}${cyan}Version:${reset} ${green}1.0.5${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
+  console.log(`${bold}${cyan}Version:${reset} ${green}${cliVersion}${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
   console.log(); 
   console.log(); 
 }
