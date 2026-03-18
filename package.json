@@ -1,6 +1,6 @@
 {
   "name": "@palr-dev/devstack-cli",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A CLI tool for managing DevStack services.",
   "main": "index.cjs",
   "keywords": [
@@ -17,7 +17,11 @@
     "typescript"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs --out-dir dist --clean",
+    "build": "npm run build:patch",
+    "build:bundle": "tsup src/index.ts --format cjs --out-dir dist --clean",
+    "build:patch": "npm version patch --no-git-tag-version && npm run build:bundle",
+    "build:minor": "npm version minor --no-git-tag-version && npm run build:bundle",
+    "build:major": "npm version major --no-git-tag-version && npm run build:bundle",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.cjs",
     "prepublishOnly": "cp README.npm.md README.md"
@@ -38,12 +42,9 @@
     "@types/node": "^25.5.0",
     "tsx": "^4.21.0"
   },
-
   "files": [
     "dist",
     "README.npm.md",
     "LICENSE"
   ]
-
-  
 }

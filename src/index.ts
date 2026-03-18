@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { createDevstackConfig } from './functions/createDevstackConfig.js';
 import { runAddPostgresConfig } from './functions/runAddPostgresConfig.js';
 import { runGenerateConfig } from './functions/runGenerateConfig.js';
@@ -18,6 +20,18 @@ const yellow = '\x1b[33m';
 const blue = '\x1b[34m';
 const bold = '\x1b[1m';
 const reset = '\x1b[0m';
+const CLI_VERSION = getCliVersion();
+
+function getCliVersion(): string {
+  const cliEntryPath = process.argv[1] ? dirname(process.argv[1]) : process.cwd();
+  const packageJsonPath = join(cliEntryPath, '..', 'package.json');
+  try {
+    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8')) as { version?: string };
+    return packageJson.version ?? '0.0.0';
+  } catch {
+    return '0.0.0';
+  }
+}
 
 const addCommand = program
 .command('add')
@@ -31,7 +45,7 @@ const logsCommand = program
 program
 .name('devstack')
 .description('A CLI tool for managing your development stack')
-.version('1.0.5');
+.version(CLI_VERSION);
 
 program
 .command('init')
@@ -115,7 +129,7 @@ function printHeader() {
   // console.log();
   console.log(`${magenta}${bold}${art}${reset}`);
   console.log(`${cyan}${bold}devstack${reset} — A CLI tool for managing your development stack`);
-  console.log(`${bold}${cyan}Version:${reset} ${green}1.0.5${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
+  console.log(`${bold}${cyan}Version:${reset} ${green}${CLI_VERSION}${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
   console.log(); 
   console.log(); 
 }
