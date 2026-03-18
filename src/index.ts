@@ -31,7 +31,7 @@ const logsCommand = program
 program
 .name('devstack')
 .description('A CLI tool for managing your development stack')
-.version('1.0.4');
+.version('1.0.5');
 
 program
 .command('init')
@@ -115,7 +115,7 @@ function printHeader() {
   // console.log();
   console.log(`${magenta}${bold}${art}${reset}`);
   console.log(`${cyan}${bold}devstack${reset} — A CLI tool for managing your development stack`);
-  console.log(`${bold}${cyan}Version:${reset} ${green}1.0.4${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
+  console.log(`${bold}${cyan}Version:${reset} ${green}1.0.5${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
   console.log(); 
   console.log(); 
 }

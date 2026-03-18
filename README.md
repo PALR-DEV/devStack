@@ -1,32 +1,7 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/🚧%20work%20in%20progress-yellow?style=for-the-badge" alt="work in progress" />
-</p>
 
-> ⚠️ **This project is a work in progress.** Features and APIs may change. Use with caution in production environments.
+<h1 align="center">devstack</h1>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/devstack-cli-blueviolet?style=for-the-badge&logo=docker&logoColor=white" alt="devstack badge" />
-  <img src="https://img.shields.io/badge/version-1.0.3-brightgreen?style=for-the-badge" alt="version" />
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="license" />
-  <img src="https://img.shields.io/badge/node-%3E%3D18-orange?style=for-the-badge&logo=node.js&logoColor=white" alt="node version" />
-  <img src="https://img.shields.io/badge/typescript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="typescript" />
-  <img src="https://img.shields.io/npm/dw/@palr-dev/devstack-cli?style=for-the-badge&logo=npm" alt="npm downloads" />
-</p>
-
-<p align="center">
-<pre align="center">
-      $$\                      $$$$$$\    $$\                         $$\       
-      $$ |                    $$  __$$\   $$ |                        $$ |      
- $$$$$$$ | $$$$$$\ $$\    $$\ $$ /  \__|$$$$$$\    $$$$$$\   $$$$$$$\ $$ |  $$\ 
-$$  __$$ |$$  __$$\\$$\  $$  |\$$$$$$\  \_$$  _|   \____$$\ $$  _____|$$ | $$  |
-$$ /  $$ |$$$$$$$$ |\$$\$$  /  \____$$\   $$ |     $$$$$$$ |$$ /      $$$$$$  / 
-$$ |  $$ |$$   ____| \$$$  /  $$\   $$ |  $$ |$$\ $$  __$$ |$$ |      $$  _$$<  
-\$$$$$$$ |\$$$$$$$\   \$  /   \$$$$$$  |  \$$$$  |\$$$$$$$ |\$$$$$$$\ $$ | \$$\ 
- \_______| \_______|   \_/     \______/    \____/  \_______| \_______|\__|  \__|
-</pre>
-</p>
-
-<h3 align="center">⚡ Zero-friction development infrastructure at your fingertips.</h3>
+<h3 align="center">Zero-friction development infrastructure at your fingertips.</h3>
 
 <p align="center">
   Stop wrestling with Docker configurations — spin up databases and services for local development in seconds.
