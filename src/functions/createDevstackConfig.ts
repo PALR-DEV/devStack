@@ -17,7 +17,7 @@ export function createDevstackConfig(projectName?:string) {
         process.exit(1);
     }
 
-    fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`);
+    fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`, "utf-8");
     console.log("✅ DevStack initialized");
     console.log(`✅ Created ${configPath}`);
 }

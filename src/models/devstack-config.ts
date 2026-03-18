@@ -7,6 +7,9 @@ export interface PostgresServiceConfig{
     password:string;
     database:string;
     volume: boolean;
+    volumeName?: string;
+    restart?: "no" | "always" | "unless-stopped" | "on-failure";
+    healthcheck?: boolean;
 }
 
 export interface DevStackServices {
@@ -30,5 +33,12 @@ export interface RedisServiceConfig {
   port: number;
   password?: string;
   volume: boolean;
+  volumeName?: string;
+  restart?: "no" | "always" | "unless-stopped" | "on-failure";
+  healthcheck?: boolean;
 }
 
+export type ComposeConfig = {
+  services: Record<string, any>;
+  volumes?: Record<string, any>;
+};
