@@ -11,7 +11,9 @@ import type { PostgresServiceConfig, RedisServiceConfig } from './models/devstac
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
 import { runStatusConfig } from './functions/runStatusConfig.js';
+import { runRestartConfig } from './functions/runRestartConfig.js';
 import { runAddRedisConfig } from './functions/runAddRedisConfig.js';
+
 
 const program = new Command();
 const cyan = '\x1b[36m';
@@ -119,7 +121,13 @@ program
   runStatusConfig(service);
 });
 
-
+program
+.command("restart")
+.description("Restart DevStack services")
+.argument('[service]', 'Service name to restart (e.g., redis, postgres)')
+.action((service?: string) => {
+  runRestartConfig(service);
+});
 
 function printHeader() {
   console.log();
