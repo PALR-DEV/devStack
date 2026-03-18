@@ -140,12 +140,6 @@ Commit this file to version control and every team member gets an identical stac
 - Status dashboard
 - Secrets management via `.env`
 
-## npm Publish Workflow (Maintainers)
-
-This repository includes a GitHub Actions workflow at `.github/workflows/publish-npm.yml` that publishes the package to npm when a GitHub release is published.
-
-Before using it, add an `NPM_TOKEN` repository secret with publish access to `@palr-dev/devstack-cli`.
-
 ## Contributing
 
 Contributions are welcome! See the [GitHub repository](https://github.com/palr-dev/devstack) for development setup and contribution guidelines.
