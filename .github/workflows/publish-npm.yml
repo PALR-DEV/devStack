@@ -25,6 +25,14 @@ jobs:
       - name: Build package
         run: npm run build
 
+      - name: Verify build artifacts
+        run: test -f dist/index.cjs
+
+      - name: Dry run publish
+        run: npm publish --dry-run --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish to npm
         run: npm publish --access public
         env:
