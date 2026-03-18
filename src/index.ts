@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { createDevstackConfig } from './functions/createDevstackConfig.js';
 import { runAddPostgresConfig } from './functions/runAddPostgresConfig.js';
@@ -23,14 +23,27 @@ const reset = '\x1b[0m';
 const CLI_VERSION = getCliVersion();
 
 function getCliVersion(): string {
-  const cliEntryPath = process.argv[1] ? dirname(process.argv[1]) : process.cwd();
-  const packageJsonPath = join(cliEntryPath, '..', 'package.json');
-  try {
-    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8')) as { version?: string };
-    return packageJson.version ?? '0.0.0';
-  } catch {
-    return '0.0.0';
+  const candidates = [
+    typeof __dirname !== 'undefined' ? join(__dirname, '..', 'package.json') : '',
+    process.argv[1] ? join(dirname(process.argv[1]), '..', 'package.json') : ''
+  ].filter(Boolean);
+
+  for (const packageJsonPath of candidates) {
+    if (!existsSync(packageJsonPath)) {
+      continue;
+    }
+
+    try {
+      const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8')) as { version?: string };
+      if (packageJson.version) {
+        return packageJson.version;
+      }
+    } catch {
+      // continue to next candidate
+    }
   }
+
+  return process.env.npm_package_version ?? '0.0.0';
 }
 
 const addCommand = program
