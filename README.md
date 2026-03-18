@@ -6,6 +6,7 @@
    <img src="https://img.shields.io/npm/v/@palr-dev/devstack-cli?style=for-the-badge&logo=npm" alt="npm version" />
    <img src="https://img.shields.io/github/stars/PALR-DEV/devstack?style=for-the-badge" alt="git hub stars" />
    <img src="https://img.shields.io/npm/last-update/@palr-dev/devstack-cli?style=for-the-badge" alt="last updated" />
+   <img src="https://img.shields.io/badge/status-work%20in%20progress-yellow?style=for-the-badge" alt="work in progress" />
    
 </p>
 
@@ -27,6 +28,9 @@ $$ |  $$ |$$   ____| \$$$  /  $$\   $$ |  $$ |$$\ $$  __$$ |$$ |      $$  _$$<
 <p align="center">
   Stop wrestling with Docker configurations — spin up databases and services for local development in seconds.
 </p>
+
+> [!WARNING]
+> **🚧 Work in Progress** — This project is actively being developed. APIs and configuration options may change between releases, and new features are continuously being added. Use in production at your own risk.
 
 ---
 

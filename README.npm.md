@@ -1,11 +1,18 @@
 
 <h1 align="center">devstack</h1>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/status-work%20in%20progress-yellow?style=for-the-badge" alt="work in progress" />
+</p>
+
 <h3 align="center">Zero-friction development infrastructure at your fingertips.</h3>
 
 <p align="center">
   Stop wrestling with Docker configurations — spin up databases and services for local development in seconds.
 </p>
+
+> [!WARNING]
+> **🚧 Work in Progress** — This project is actively being developed. APIs and configuration options may change between releases, and new features are continuously being added. Use in production at your own risk.
 
 ---
 
