@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 
 import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { Command } from 'commander';
 import { createDevstackConfig } from './functions/createDevstackConfig.js';
 import { runAddPostgresConfig } from './functions/runAddPostgresConfig.js';
 import { runGenerateConfig } from './functions/runGenerateConfig.js';
 import { runUpConfig, type UpOptions } from './functions/runUpConfig.js';
-import type { PostgresServiceConfig } from './models/devstack-config.js';
+import type { PostgresServiceConfig, RedisServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
 import { runStatusConfig } from './functions/runStatusConfig.js';
 import { runRestartConfig } from './functions/runRestartConfig.js';
-import { getCliVersion } from './utils/config.js';
+import { runAddRedisConfig } from './functions/runAddRedisConfig.js';
+
 
 const program = new Command();
 const cyan = '\x1b[36m';
@@ -22,9 +24,8 @@ const blue = '\x1b[34m';
 const bold = '\x1b[1m';
 const reset = '\x1b[0m';
 
+const packageJsonVersion = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8')).version;
 
-
-const cliVersion = getCliVersion();
 
 const addCommand = program
 .command('add')
@@ -38,7 +39,7 @@ const logsCommand = program
 program
 .name('devstack')
 .description('A CLI tool for managing your development stack')
-.version(cliVersion);
+.version(packageJsonVersion, '-v, --version', 'output the current version');
 
 program
 .command('init')
@@ -59,6 +60,8 @@ program
   runGenerateConfig();
 });
 
+//TODO: Refactor to use a single "add" command with subcommands for each service type (e.g., "devstack add postgres", "devstack add redis")
+
 addCommand
 .command('postgres')
 .description('Add a PostgreSQL service to your DevStack project')
@@ -68,7 +71,19 @@ addCommand
 .option('-d, --database <database>', 'PostgreSQL database name', 'postgres')
 .action((options: PostgresServiceConfig) => {
   runAddPostgresConfig(options);
-})
+});
+
+addCommand
+.command('redis')
+.description('Add a Redis service to your DevStack project')
+.option('-p, --port <port>', 'Port to expose Redis on', '6379')
+.option('--password <password>', 'Password for Redis (optional)')
+.action((options: RedisServiceConfig) => {
+  runAddRedisConfig(options);
+});
+
+
+
 
 program
 .command("up")
@@ -130,7 +145,7 @@ function printHeader() {
   // console.log();
   console.log(`${magenta}${bold}${art}${reset}`);
   console.log(`${cyan}${bold}devstack${reset} — A CLI tool for managing your development stack`);
-  console.log(`${bold}${cyan}Version:${reset} ${green}${cliVersion}${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
+  console.log(`${bold}${cyan}Version:${reset} ${green}${packageJsonVersion}${reset}  ${bold}${cyan}Node:${reset} ${yellow}${process.version}${reset}  ${bold}${cyan}OS:${reset} ${blue}${process.platform}${reset}`);
   console.log(); 
   console.log(); 
 }

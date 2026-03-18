@@ -1,6 +1,7 @@
 import fs, { readFileSync } from "node:fs";
 import type { DevStackConfig } from "../models/devstack-config.js";
 import path from "node:path";
+import YAML from "yaml";
 
 export function getConfigPath(): string {
   return path.join(process.cwd(), "devstack.config.json");
@@ -23,14 +24,7 @@ export function writeConfig(config: DevStackConfig): void {
   fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`, "utf-8");
 }
 
-
-export function getCliVersion(): string {
-  try {
-    const packageJsonPath = new URL('../package.json', import.meta.url);
-    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8')) as { version?: string };
-    return packageJson.version ?? '0.0.0';
-  } catch {
-    return '0.0.0';
-  }
+export function convertToYAML(obj: any): any {
+  return YAML.stringify(obj);
 }
 

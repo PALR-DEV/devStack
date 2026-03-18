@@ -20,11 +20,13 @@ export function runAddPostgresConfig(options:PostgresServiceConfig){
         process.exit(1);
     }
 
+    //TODO: validate other options like username, password, database name etc
+
     config.services.postgres = {
         enabled: true,
         image: "postgres:latest",
         containerName: `${config.projectName}_postgres`,
-        port: options.port || "5432",
+        port: options.port || 5432,
         username: options.username || "postgres",
         password: options.password || "postgres",
         database: options.database || "postgres",

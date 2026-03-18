@@ -1,7 +1,29 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/devstack-cli-blueviolet?style=for-the-badge&logo=docker&logoColor=white" alt="devstack badge" />
+  <img src="https://img.shields.io/badge/version-1.0.3-brightgreen?style=for-the-badge" alt="version" />
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="license" />
+  <img src="https://img.shields.io/badge/node-%3E%3D18-orange?style=for-the-badge&logo=node.js&logoColor=white" alt="node version" />
+  <img src="https://img.shields.io/npm/dt/@palr-dev/devstack-cli?style=for-the-badge&logo=npm" alt="total downloads" />
+   <img src="https://img.shields.io/npm/v/@palr-dev/devstack-cli?style=for-the-badge&logo=npm" alt="npm version" />
+   <img src="https://img.shields.io/github/stars/PALR-DEV/devstack?style=for-the-badge" alt="git hub stars" />
+   <img src="https://img.shields.io/npm/last-update/@palr-dev/devstack-cli?style=for-the-badge" alt="last updated" />
+   
+</p>
 
-<h1 align="center">devstack</h1>
+<p align="center">
+<pre align="center">
+      $$\                      $$$$$$\    $$\                         $$\       
+      $$ |                    $$  __$$\   $$ |                        $$ |      
+ $$$$$$$ | $$$$$$\ $$\    $$\ $$ /  \__|$$$$$$\    $$$$$$\   $$$$$$$\ $$ |  $$\ 
+$$  __$$ |$$  __$$\\$$\  $$  |\$$$$$$\  \_$$  _|   \____$$\ $$  _____|$$ | $$  |
+$$ /  $$ |$$$$$$$$ |\$$\$$  /  \____$$\   $$ |     $$$$$$$ |$$ /      $$$$$$  / 
+$$ |  $$ |$$   ____| \$$$  /  $$\   $$ |  $$ |$$\ $$  __$$ |$$ |      $$  _$$<  
+\$$$$$$$ |\$$$$$$$\   \$  /   \$$$$$$  |  \$$$$  |\$$$$$$$ |\$$$$$$$\ $$ | \$$\ 
+ \_______| \_______|   \_/     \______/    \____/  \_______| \_______|\__|  \__|
+</pre>
+</p>
 
-<h3 align="center">Zero-friction development infrastructure at your fingertips.</h3>
+<h3 align="center">⚡ Zero-friction development infrastructure at your fingertips.</h3>
 
 <p align="center">
   Stop wrestling with Docker configurations — spin up databases and services for local development in seconds.
