@@ -30,7 +30,7 @@ jobs:
         run: test -f dist/index.cjs
 
       - name: Dry run publish
-        run: npm publish --dry-run --access public
+        run: npm publish --dry-run --provenance --access public
 
       - name: Publish to npm
         run: npm publish --provenance --access public
