@@ -30,7 +30,7 @@ $$ |  $$ |$$   ____| \$$$  /  $$\   $$ |  $$ |$$\ $$  __$$ |$$ |      $$  _$$<
 </p>
 
 > [!WARNING]
-> **🚧 Work in Progress** — This project is actively being developed. APIs and configuration options may change between releases, and new features are continuously being added. Use in production at your own risk.
+> **🚧 Work in Progress** — This project is actively being developed. Configuration options may change between releases, and new features will be added.
 
 ---
 
