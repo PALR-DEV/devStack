@@ -10,6 +10,7 @@ import type { PostgresServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
 import { runStatusConfig } from './functions/runStatusConfig.js';
+import { runRestartConfig } from './functions/runRestartConfig.js';
 import { getCliVersion } from './utils/config.js';
 
 const program = new Command();
@@ -103,6 +104,14 @@ program
 .argument('[service]', 'Service name to show status for (e.g., redis, postgres)')
 .action((service?: string) => {
   runStatusConfig(service);
+});
+
+program
+.command("restart")
+.description("Restart DevStack services")
+.argument('[service]', 'Service name to restart (e.g., redis, postgres)')
+.action((service?: string) => {
+  runRestartConfig(service);
 });
 
 function printHeader() {
