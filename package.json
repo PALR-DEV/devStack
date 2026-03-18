@@ -1,6 +1,6 @@
 {
   "name": "@palr-dev/devstack-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A CLI tool for managing DevStack services.",
   "main": "index.cjs",
   "keywords": [
@@ -41,7 +41,7 @@
 
   "files": [
     "dist",
-    "NPM_README.md",
+    "README.npm.md",
     "LICENSE"
   ]
 
