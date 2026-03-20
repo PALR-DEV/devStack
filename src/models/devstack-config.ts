@@ -12,9 +12,24 @@ export interface PostgresServiceConfig{
     healthcheck?: boolean;
 }
 
+export interface MongoServiceConfig {
+    enabled: boolean;
+    image: string;
+    containerName: string;
+    port: number;
+    username: string;
+    password: string;
+    database: string;
+    volume: boolean;
+    volumeName?: string;
+    restart?: "no" | "always" | "unless-stopped" | "on-failure";
+    healthcheck?: boolean;
+}
+
 export interface DevStackServices {
     postgres?: PostgresServiceConfig;
     redis?: RedisServiceConfig;
+    mongo?: MongoServiceConfig;
 }
 
 

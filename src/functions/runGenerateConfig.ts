@@ -5,6 +5,7 @@ import path from "node:path";
 import fs from "node:fs";
 import { addPostgresService } from "../addServices/addPostgresService.js";
 import { addRedisService } from "../addServices/addRedisService.js";
+import { addMongoService } from "../addServices/addMongoService.js";
 
 
 //TODO: refactor the functions to be more modular instead of creating a function for each service
@@ -34,6 +35,9 @@ export function runGenerateConfig() {
                 break;
             case "redis":
                 addRedisService(config, composeConfig);
+                break;
+            case "mongo":
+                addMongoService(config, composeConfig);
                 break;
         }
     }

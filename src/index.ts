@@ -7,12 +7,13 @@ import { createDevstackConfig } from './functions/createDevstackConfig.js';
 import { runAddPostgresConfig } from './functions/runAddPostgresConfig.js';
 import { runGenerateConfig } from './functions/runGenerateConfig.js';
 import { runUpConfig, type UpOptions } from './functions/runUpConfig.js';
-import type { PostgresServiceConfig, RedisServiceConfig } from './models/devstack-config.js';
+import type { PostgresServiceConfig, RedisServiceConfig, MongoServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
 import { runStatusConfig } from './functions/runStatusConfig.js';
 import { runRestartConfig } from './functions/runRestartConfig.js';
 import { runAddRedisConfig } from './functions/runAddRedisConfig.js';
+import { runAddMongoConfig } from './functions/runAddMongoConfig.js';
 
 
 const program = new Command();
@@ -80,6 +81,17 @@ addCommand
 .option('--password <password>', 'Password for Redis (optional)')
 .action((options: RedisServiceConfig) => {
   runAddRedisConfig(options);
+});
+
+addCommand
+.command('mongo')
+.description('Add a MongoDB service to your DevStack project')
+.option('-p, --port <port>', 'Port to expose MongoDB on', '27017')
+.option('-u, --username <username>', 'MongoDB username', 'mongo')
+.option('-P, --password <password>', 'MongoDB password', 'mongo')
+.option('-d, --database <database>', 'MongoDB database name', 'mongo')
+.action((options: MongoServiceConfig) => {
+  runAddMongoConfig(options);
 });
 
 
