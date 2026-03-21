@@ -1,21 +1,16 @@
-import { convertToYAML, readConfig, writeConfig } from "../utils/config.js";
-import type { DevStackConfig } from "../models/devstack-config.js";
-import YAML from "yaml";
+import { convertToYAML, readConfig } from "../utils/config.js";
+import type { ComposeConfig, DevStackConfig } from "../models/devstack-config.js";
 import path from "node:path";
 import fs from "node:fs";
 import { addPostgresService } from "../addServices/addPostgresService.js";
 import { addRedisService } from "../addServices/addRedisService.js";
 import { addMongoService } from "../addServices/addMongoService.js";
 
-
-//TODO: refactor the functions to be more modular instead of creating a function for each service
-
-type ComposeConfig = {
-  services: Record<string, any>;
-  volumes?: Record<string, any>;
+const serviceGenerators: Record<string, (config: DevStackConfig, composeConfig: ComposeConfig) => void> = {
+    postgres: addPostgresService,
+    redis: addRedisService,
+    mongo: addMongoService,
 };
-
-
 
 export function runGenerateConfig() {
     const config: DevStackConfig = readConfig();
@@ -28,17 +23,12 @@ export function runGenerateConfig() {
     const composeConfig: ComposeConfig = {
         services: {}
     };
-    for(const serviceName in config.services) {
-        switch(serviceName) {
-            case "postgres":
-                addPostgresService(config, composeConfig);
-                break;
-            case "redis":
-                addRedisService(config, composeConfig);
-                break;
-            case "mongo":
-                addMongoService(config, composeConfig);
-                break;
+    for (const serviceName in config.services) {
+        const generator = serviceGenerators[serviceName];
+        if (generator) {
+            generator(config, composeConfig);
+        } else {
+            console.warn(`⚠️ No generator found for service "${serviceName}". Skipping.`);
         }
     }
 
