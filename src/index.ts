@@ -25,6 +25,7 @@ import { runOpenConfig } from './functions/runOpenConfig.js';
 import { runListConfig } from './functions/runListConfig.js';
 import { runRemoveConfig } from './functions/runRemoveConfig.js';
 import { runNukeConfig } from './functions/runNukeConfig.js';
+import { runConnectConfig } from './functions/runConnectConfig.js';
 
 
 const program = new Command();
@@ -174,7 +175,7 @@ program
 .description("Stop DevStack services")
 .option('-v, --remove-volumes', 'Remove associated volumes used by the stack', false)
 .option('-i, --remove-images', 'Remove images used by the stack', false)
-.option('-a, --all', 'Remove volumes, images, and prune Docker builder cache', false)
+.option('-a, --all', 'Remove all associated volumes and images', false)
 .action((options: { removeVolumes: boolean; removeImages: boolean; all: boolean }) => {
   if (options.all) {
     options.removeVolumes = true;
@@ -240,6 +241,14 @@ program
 .argument('<service>', 'Service to remove (e.g. redis, postgres)')
 .action((service: string) => {
   runRemoveConfig(service);
+});
+
+program
+.command('connect')
+.description('Open an interactive shell into a service')
+.argument('<service>', 'Service to connect to (e.g. postgres, redis, mongo, mysql)')
+.action((service: string) => {
+  runConnectConfig(service);
 });
 
 program
