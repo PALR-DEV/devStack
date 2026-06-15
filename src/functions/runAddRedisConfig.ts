@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { RedisServiceConfig } from "../models/devstack-config.js";
 
 export function runAddRedisConfig(options: RedisServiceConfig){
@@ -36,7 +36,5 @@ export function runAddRedisConfig(options: RedisServiceConfig){
     if (config.services.redis.password) {
         console.log(`  Password:  set`);
     }
-    console.log("\nNext steps:");
-    console.log("  devstack gen");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }

@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { MongoServiceConfig } from "../models/devstack-config.js";
 
 export function runAddMongoConfig(options: MongoServiceConfig) {
@@ -38,7 +38,5 @@ export function runAddMongoConfig(options: MongoServiceConfig) {
     console.log(`  Port:      ${config.services.mongo.port}`);
     console.log(`  User:      ${config.services.mongo.username}`);
     console.log(`  Database:  ${config.services.mongo.database}`);
-    console.log("\nNext steps:");
-    console.log("  devstack generate");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }
