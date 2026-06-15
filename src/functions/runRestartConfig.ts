@@ -1,18 +1,9 @@
-import path from "node:path";
-import fs from "node:fs";
-import { readConfig } from "../utils/config.js";
+import { readConfig, requireComposeFile } from "../utils/config.js";
 import { spawnSync } from "node:child_process";
 
 export function runRestartConfig(service?: string) {
     const config = readConfig();
-    const composeFileName = config.composeFileName || "docker-compose.devstack.yml";
-    const composePath = path.join(process.cwd(), composeFileName);
-
-    if (!fs.existsSync(composePath)) {
-        console.error(`⚠️ ${composeFileName} not found.`);
-        console.error("Please run `devstack generate` first.");
-        process.exit(1);
-    }
+    const composeFileName = requireComposeFile(config);
 
     const args = ["compose", "-f", composeFileName, "restart"];
 

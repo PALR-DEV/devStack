@@ -5,11 +5,21 @@ import fs from "node:fs";
 import { addPostgresService } from "../addServices/addPostgresService.js";
 import { addRedisService } from "../addServices/addRedisService.js";
 import { addMongoService } from "../addServices/addMongoService.js";
+import { addMySQLService } from "../addServices/addMySQLService.js";
+import { addRabbitMQService } from "../addServices/addRabbitMQService.js";
+import { addElasticsearchService } from "../addServices/addElasticsearchService.js";
+import { addMinIOService } from "../addServices/addMinIOService.js";
+import { addMailpitService } from "../addServices/addMailpitService.js";
 
 const serviceGenerators: Record<string, (config: DevStackConfig, composeConfig: ComposeConfig) => void> = {
     postgres: addPostgresService,
     redis: addRedisService,
     mongo: addMongoService,
+    mysql: addMySQLService,
+    rabbitmq: addRabbitMQService,
+    elasticsearch: addElasticsearchService,
+    minio: addMinIOService,
+    mailpit: addMailpitService,
 };
 
 export function runGenerateConfig() {

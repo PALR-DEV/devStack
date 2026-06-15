@@ -7,13 +7,18 @@ import { createDevstackConfig } from './functions/createDevstackConfig.js';
 import { runAddPostgresConfig } from './functions/runAddPostgresConfig.js';
 import { runGenerateConfig } from './functions/runGenerateConfig.js';
 import { runUpConfig, type UpOptions } from './functions/runUpConfig.js';
-import type { PostgresServiceConfig, RedisServiceConfig, MongoServiceConfig } from './models/devstack-config.js';
+import type { PostgresServiceConfig, RedisServiceConfig, MongoServiceConfig, MySQLServiceConfig, RabbitMQServiceConfig, ElasticsearchServiceConfig, MinIOServiceConfig, MailpitServiceConfig } from './models/devstack-config.js';
 import { runDownConfig } from './functions/runDownConfig.js';
 import { runLogsConfig } from './functions/runLogsConfig.js';
 import { runStatusConfig } from './functions/runStatusConfig.js';
 import { runRestartConfig } from './functions/runRestartConfig.js';
 import { runAddRedisConfig } from './functions/runAddRedisConfig.js';
 import { runAddMongoConfig } from './functions/runAddMongoConfig.js';
+import { runAddMySQLConfig } from './functions/runAddMySQLConfig.js';
+import { runAddRabbitMQConfig } from './functions/runAddRabbitMQConfig.js';
+import { runAddElasticsearchConfig } from './functions/runAddElasticsearchConfig.js';
+import { runAddMinIOConfig } from './functions/runAddMinIOConfig.js';
+import { runAddMailpitConfig } from './functions/runAddMailpitConfig.js';
 
 
 const program = new Command();
@@ -67,7 +72,7 @@ addCommand
 .command('postgres')
 .description('Add a PostgreSQL service to your DevStack project')
 .option('-p, --port <port>', 'Port to expose PostgreSQL on', '5432')
-.option('-u, --user <user>', 'PostgreSQL username', 'postgres')
+.option('-u, --username <username>', 'PostgreSQL username', 'postgres')
 .option('-P, --password <password>', 'PostgreSQL password', 'postgres')
 .option('-d, --database <database>', 'PostgreSQL database name', 'postgres')
 .action((options: PostgresServiceConfig) => {
@@ -92,6 +97,58 @@ addCommand
 .option('-d, --database <database>', 'MongoDB database name', 'mongo')
 .action((options: MongoServiceConfig) => {
   runAddMongoConfig(options);
+});
+
+addCommand
+.command('mysql')
+.description('Add a MySQL service to your DevStack project')
+.option('-p, --port <port>', 'Port to expose MySQL on', '3306')
+.option('-R, --root-password <rootPassword>', 'MySQL root password', 'rootpassword')
+.option('-u, --username <username>', 'MySQL username', 'mysql')
+.option('-P, --password <password>', 'MySQL password', 'mysql')
+.option('-d, --database <database>', 'MySQL database name', 'mysql')
+.action((options: MySQLServiceConfig) => {
+  runAddMySQLConfig(options);
+});
+
+addCommand
+.command('rabbitmq')
+.description('Add a RabbitMQ service to your DevStack project')
+.option('-p, --port <port>', 'AMQP port', '5672')
+.option('-m, --management-port <managementPort>', 'Management UI port', '15672')
+.option('-u, --username <username>', 'RabbitMQ username', 'guest')
+.option('-P, --password <password>', 'RabbitMQ password', 'guest')
+.action((options: RabbitMQServiceConfig) => {
+  runAddRabbitMQConfig(options);
+});
+
+addCommand
+.command('elasticsearch')
+.description('Add an Elasticsearch service to your DevStack project')
+.option('-p, --port <port>', 'Port to expose Elasticsearch on', '9200')
+.option('-P, --password <password>', 'Elastic password (enables security when set)')
+.action((options: ElasticsearchServiceConfig) => {
+  runAddElasticsearchConfig(options);
+});
+
+addCommand
+.command('minio')
+.description('Add a MinIO (S3-compatible storage) service to your DevStack project')
+.option('-p, --port <port>', 'API port', '9000')
+.option('-c, --console-port <consolePort>', 'Web console port', '9001')
+.option('-u, --root-user <rootUser>', 'Root user', 'minioadmin')
+.option('-P, --root-password <rootPassword>', 'Root password', 'minioadmin')
+.action((options: MinIOServiceConfig) => {
+  runAddMinIOConfig(options);
+});
+
+addCommand
+.command('mailpit')
+.description('Add a Mailpit local SMTP catcher to your DevStack project')
+.option('-p, --smtp-port <smtpPort>', 'SMTP port your app sends to', '1025')
+.option('-u, --ui-port <uiPort>', 'Web UI port to inspect emails', '8025')
+.action((options: MailpitServiceConfig) => {
+  runAddMailpitConfig(options);
 });
 
 

@@ -24,7 +24,7 @@ export function runAddPostgresConfig(options:PostgresServiceConfig){
 
     config.services.postgres = {
         enabled: true,
-        image: "postgres:latest",
+        image: "postgres:17",
         containerName: `${config.projectName}_postgres`,
         port: options.port || 5432,
         username: options.username || "postgres",
@@ -41,6 +41,6 @@ export function runAddPostgresConfig(options:PostgresServiceConfig){
         console.log(`  User:      ${config.services.postgres.username}`);
         console.log(`  Database:  ${config.services.postgres.database}`);
         console.log("\nNext steps:");
-        console.log("  devstack generate");
+        console.log("  devstack gen");
         console.log("  devstack up");
  }
