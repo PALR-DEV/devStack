@@ -19,6 +19,12 @@ import { runAddRabbitMQConfig } from './functions/runAddRabbitMQConfig.js';
 import { runAddElasticsearchConfig } from './functions/runAddElasticsearchConfig.js';
 import { runAddMinIOConfig } from './functions/runAddMinIOConfig.js';
 import { runAddMailpitConfig } from './functions/runAddMailpitConfig.js';
+import { runInfoConfig } from './functions/runInfoConfig.js';
+import { runEnvConfig } from './functions/runEnvConfig.js';
+import { runOpenConfig } from './functions/runOpenConfig.js';
+import { runListConfig } from './functions/runListConfig.js';
+import { runRemoveConfig } from './functions/runRemoveConfig.js';
+import { runNukeConfig } from './functions/runNukeConfig.js';
 
 
 const program = new Command();
@@ -54,8 +60,8 @@ program
 .action((projectName) => {
   createDevstackConfig(projectName);
   console.log("\nNext steps:");
-  console.log("  devstack add postgres");
-  console.log("  devstack generate");
+  console.log("  devstack add <service>");
+  console.log("  devstack gen");
   console.log("  devstack up");
 });
 
@@ -168,7 +174,7 @@ program
 .description("Stop DevStack services")
 .option('-v, --remove-volumes', 'Remove associated volumes used by the stack', false)
 .option('-i, --remove-images', 'Remove images used by the stack', false)
-.option('-a, --all', 'Remove all associated resources (volumes and images)', false)
+.option('-a, --all', 'Remove volumes, images, and prune Docker builder cache', false)
 .action((options: { removeVolumes: boolean; removeImages: boolean; all: boolean }) => {
   if (options.all) {
     options.removeVolumes = true;
@@ -196,6 +202,52 @@ program
 .argument('[service]', 'Service name to restart (e.g., redis, postgres)')
 .action((service?: string) => {
   runRestartConfig(service);
+});
+
+program
+.command('info')
+.description('Show project info, service status, and connection strings')
+.action(() => {
+  runInfoConfig();
+});
+
+program
+.command('list')
+.description('List all configured services in a table')
+.action(() => {
+  runListConfig();
+});
+
+program
+.command('env')
+.description('Print .env-ready connection strings for all services')
+.option('-o, --output <file>', 'Write to a file instead of stdout (e.g. .env)')
+.action((options: { output?: string }) => {
+  runEnvConfig(options);
+});
+
+program
+.command('open')
+.description('Open service web UIs in the browser')
+.argument('[service]', 'Service to open (mailpit, rabbitmq, minio, elasticsearch)')
+.action((service?: string) => {
+  runOpenConfig(service);
+});
+
+program
+.command('remove')
+.description('Remove a service from devstack.config.json')
+.argument('<service>', 'Service to remove (e.g. redis, postgres)')
+.action((service: string) => {
+  runRemoveConfig(service);
+});
+
+program
+.command('nuke')
+.description('Stop all services, delete compose file, and reset config')
+.option('-y, --yes', 'Skip confirmation', false)
+.action((options: { yes: boolean }) => {
+  runNukeConfig(options);
 });
 
 function printHeader() {
