@@ -1,0 +1,86 @@
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.asciiArt {
+  font-size: 0.55rem;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  color: inherit;
+  background: transparent;
+  border: none;
+  display: inline-block;
+  text-align: left;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 996px) {
+  .asciiArt {
+    display: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.quickstart {
+  padding: 4rem 0;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.codeBlock {
+  max-width: 480px;
+  margin: 2rem auto 0;
+  background: var(--ifm-pre-background);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.prompt {
+  color: var(--ifm-color-primary);
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.services {
+  padding: 4rem 0;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-card-background-color);
+}
+
+.serviceCard code {
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary);
+}
