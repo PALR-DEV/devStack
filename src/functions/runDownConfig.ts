@@ -23,11 +23,6 @@ export function runDownConfig(options: { removeVolumes: boolean; removeImages: b
         process.exit(result.status ?? 1);
     }
 
-    if (options.all) {
-        console.log("\n🧹 Cleaning Docker builder cache...\n");
-        spawnSync("docker", ["builder", "prune", "-f"], { stdio: "inherit" });
-    }
-
     console.log("\n✅ DevStack stopped successfully.\n");
     process.exit(result.status ?? 0);
 }
