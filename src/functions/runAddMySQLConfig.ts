@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { MySQLServiceConfig } from "../models/devstack-config.js";
 
 export function runAddMySQLConfig(options: MySQLServiceConfig) {
@@ -39,7 +39,5 @@ export function runAddMySQLConfig(options: MySQLServiceConfig) {
     console.log(`  Port:      ${config.services.mysql.port}`);
     console.log(`  User:      ${config.services.mysql.username}`);
     console.log(`  Database:  ${config.services.mysql.database}`);
-    console.log("\nNext steps:");
-    console.log("  devstack gen");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }
