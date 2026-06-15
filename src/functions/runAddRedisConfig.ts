@@ -21,10 +21,10 @@ export function runAddRedisConfig(options: RedisServiceConfig){
 
     config.services.redis = {
         enabled: true,
-        image: "redis:latest",
+        image: "redis:7",
         containerName: `${config.projectName}_redis`,
-        port: options.port || 6379,
-        password: options.password || 'redis_password',
+        port: port,
+        password: options.password,
         volume: true,
     } as RedisServiceConfig;
 
@@ -33,4 +33,10 @@ export function runAddRedisConfig(options: RedisServiceConfig){
 
     console.log("----Configuration----");
     console.log(`  Port:      ${config.services.redis.port}`);
+    if (config.services.redis.password) {
+        console.log(`  Password:  set`);
+    }
+    console.log("\nNext steps:");
+    console.log("  devstack gen");
+    console.log("  devstack up");
 }
