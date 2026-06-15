@@ -19,8 +19,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs --out-dir dist --clean",
     "dev": "tsx src/index.ts",
-    "start": "node dist/index.cjs",
-    "prepublishOnly": "cp README.npm.md README.md"
+    "start": "node dist/index.cjs"
   },
   "bin": {
     "devstack": "./dist/index.cjs"
@@ -40,7 +39,7 @@
   },
   "files": [
     "dist",
-    "README.npm.md",
+    "README.md",
     "LICENSE"
   ]
 }
