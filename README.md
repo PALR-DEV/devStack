@@ -37,7 +37,6 @@ $$ |  $$ |$$   ____| \$$$  /  $$\   $$ |  $$ |$$\ $$  __$$ |$$ |      $$  _$$<
 
 Every new project starts the same way. You need a database. Maybe a cache. Maybe a message queue. So you spend the first hour of your day writing Docker Compose files, looking up environment variable names, figuring out which port conflicts with something else already running, and copy-pasting connection strings into your `.env`.
 
-That's not engineering. That's setup tax — and you pay it every single time.
 
 ## What devstack is
 
