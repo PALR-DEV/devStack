@@ -40,3 +40,14 @@ export function addNamedVolume(composeConfig: ComposeConfig, name: string): void
   composeConfig.volumes = { ...(composeConfig.volumes ?? {}), [name]: {} };
 }
 
+export function printAddNextSteps(config: DevStackConfig): void {
+  const composePath = path.join(process.cwd(), config.composeFileName ?? "docker-compose.devstack.yml");
+  if (fs.existsSync(composePath)) {
+    console.log("\n⚠️  Your compose file is out of sync — run \`devstack gen\` to apply this change.");
+  } else {
+    console.log("\nNext steps:");
+    console.log("  devstack gen");
+    console.log("  devstack up");
+  }
+}
+

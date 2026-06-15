@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { RabbitMQServiceConfig } from "../models/devstack-config.js";
 
 export function runAddRabbitMQConfig(options: RabbitMQServiceConfig) {
@@ -40,7 +40,5 @@ export function runAddRabbitMQConfig(options: RabbitMQServiceConfig) {
     console.log(`  Management Port: ${config.services.rabbitmq.managementPort}`);
     console.log(`  User:            ${config.services.rabbitmq.username}`);
     console.log("  Management UI:   http://localhost:15672");
-    console.log("\nNext steps:");
-    console.log("  devstack gen");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }

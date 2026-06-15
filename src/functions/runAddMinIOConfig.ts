@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { MinIOServiceConfig } from "../models/devstack-config.js";
 
 export function runAddMinIOConfig(options: MinIOServiceConfig) {
@@ -40,7 +40,5 @@ export function runAddMinIOConfig(options: MinIOServiceConfig) {
     console.log(`  Console Port: ${config.services.minio.consolePort}`);
     console.log(`  Root User:    ${config.services.minio.rootUser}`);
     console.log("  Console URL:  http://localhost:9001");
-    console.log("\nNext steps:");
-    console.log("  devstack gen");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }
