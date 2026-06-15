@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { MailpitServiceConfig } from "../models/devstack-config.js";
 
 export function runAddMailpitConfig(options: MailpitServiceConfig) {
@@ -36,7 +36,5 @@ export function runAddMailpitConfig(options: MailpitServiceConfig) {
     console.log("----Configuration----");
     console.log(`  SMTP Port: ${config.services.mailpit.smtpPort}  ← point your app here`);
     console.log(`  Web UI:    http://localhost:${config.services.mailpit.uiPort}`);
-    console.log("\nNext steps:");
-    console.log("  devstack gen");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }

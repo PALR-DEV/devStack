@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type { ElasticsearchServiceConfig } from "../models/devstack-config.js";
 
 export function runAddElasticsearchConfig(options: ElasticsearchServiceConfig) {
@@ -35,7 +35,5 @@ export function runAddElasticsearchConfig(options: ElasticsearchServiceConfig) {
     console.log("----Configuration----");
     console.log(`  Port:     ${config.services.elasticsearch.port}`);
     console.log(`  Security: ${options.password ? "enabled" : "disabled (dev mode)"}`);
-    console.log("\nNext steps:");
-    console.log("  devstack gen");
-    console.log("  devstack up");
+    printAddNextSteps(config);
 }

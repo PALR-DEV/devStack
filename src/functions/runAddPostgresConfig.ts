@@ -1,4 +1,4 @@
-import { readConfig, writeConfig } from "../utils/config.js";
+import { readConfig, writeConfig, printAddNextSteps } from "../utils/config.js";
 import type {  PostgresServiceConfig } from "../models/devstack-config.js";
 
 export function runAddPostgresConfig(options:PostgresServiceConfig){
@@ -40,7 +40,5 @@ export function runAddPostgresConfig(options:PostgresServiceConfig){
         console.log(`  Port:      ${config.services.postgres.port}`);
         console.log(`  User:      ${config.services.postgres.username}`);
         console.log(`  Database:  ${config.services.postgres.database}`);
-        console.log("\nNext steps:");
-        console.log("  devstack gen");
-        console.log("  devstack up");
+        printAddNextSteps(config);
  }
