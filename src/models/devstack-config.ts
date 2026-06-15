@@ -2,7 +2,7 @@ export interface PostgresServiceConfig {
     enabled: boolean;
     image: string;
     containerName: string;
-    port: string;
+    port: number;
     username: string;
     password: string;
     database: string;
