@@ -1,5 +1,5 @@
 import { spawnSync } from "child_process";
-import { getConfigPath, readConfig } from "../utils/config.js";
+import { readConfig } from "../utils/config.js";
 
 export function runDownConfig(options: { removeVolumes: boolean; removeImages: boolean }) {
     console.log("\n⏹  Stopping DevStack services...\n");
@@ -17,7 +17,6 @@ export function runDownConfig(options: { removeVolumes: boolean; removeImages: b
   }
   const result = spawnSync("docker", args, {
     stdio: "inherit",
-    shell: true
   });
 
   if(result.status !== 0) {
@@ -31,6 +30,7 @@ export function runDownConfig(options: { removeVolumes: boolean; removeImages: b
     ["builder", "prune", "-f"],
     { stdio: "inherit" }
   );
-  process.exit(result.status ?? 0);
+
   console.log("\n✅ DevStack stopped and cleaned successfully.\n");
+  process.exit(result.status ?? 0);
 }

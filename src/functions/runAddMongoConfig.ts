@@ -22,7 +22,7 @@ export function runAddMongoConfig(options: MongoServiceConfig) {
 
     config.services.mongo = {
         enabled: true,
-        image: "mongo:latest",
+        image: "mongo:8",
         containerName: `${config.projectName}_mongo`,
         port: port,
         username: options.username || "mongo",
