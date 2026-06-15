@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/github/stars/PALR-DEV/devstack?style=for-the-badge" alt="git hub stars" />
   <img src="https://img.shields.io/npm/last-update/@palr-dev/devstack-cli?style=for-the-badge" alt="last updated" />
   <img src="https://img.shields.io/badge/status-work%20in%20progress-yellow?style=for-the-badge" alt="work in progress" />
+  <a href="https://PALR-DEV.github.io/devStack/"><img src="https://img.shields.io/badge/docs-github%20pages-blueviolet?style=for-the-badge" alt="docs" /></a>
 </p>
 
 <p align="center">
@@ -84,6 +85,10 @@ Spinning up containers is the baseline. devstack goes further:
 - **`devstack env`** generates a ready-to-use `.env` file with connection strings for every configured service.
 - **`devstack open`** opens the web UI for services that have one — RabbitMQ's management console, MinIO's dashboard, Mailpit's inbox — directly in your browser.
 - **`devstack nuke`** tears everything down and resets your config when you need to start fresh.
+
+## Documentation
+
+Full docs, service guides, and command reference at **[palr-dev.github.io/devStack](https://PALR-DEV.github.io/devStack/)**.
 
 ## Installation
 
