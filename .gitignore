@@ -5,3 +5,4 @@
 website/node_modules/
 website/build/
 website/.docusaurus/
+.claude/

@@ -15,7 +15,7 @@ export interface PostgresServiceConfig {
 export interface RedisServiceConfig {
     enabled: boolean;
     image: string;
-    containerName: string;
+    containerName: string;  
     port: number;
     password?: string;
     volume: boolean;
